@@ -10,8 +10,14 @@ class Ex2DataRepository(
     private val ex2DbDataSource: Ex2DbDataSource
 ) : Ex2Repository {
     override fun getGames(): List<Game> {
-        val games = mockEx2RemoteDataSource.getGames()
-        ex2DbDataSource.saveGames(games)
-        return games
+        val gamesLocal = ex2DbDataSource.getGames()
+        if (gamesLocal.isEmpty()) {
+            val gamesRemote = mockEx2RemoteDataSource.getGames()
+            ex2DbDataSource.saveGames(gamesRemote)
+            return gamesRemote
+        } else {
+            return gamesLocal
+        }
+
     }
 }

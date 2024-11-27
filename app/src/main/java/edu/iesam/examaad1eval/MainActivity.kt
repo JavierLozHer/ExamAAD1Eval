@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
             //llamar a Room
             val ex2DataRepository = Ex2DataRepository(MockEx2RemoteDataSource(), Ex2DbDataSource(db.gameDao()))
-            ex2DataRepository.getGames()
+            val games = ex2DataRepository.getGames()
         }
     }
 }

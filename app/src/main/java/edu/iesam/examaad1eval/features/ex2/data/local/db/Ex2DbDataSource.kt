@@ -10,6 +10,10 @@ class Ex2DbDataSource(
 
     private val gson = Gson()
 
+    fun getGames() : List<Game> {
+        return gameDao.getGames().map { it.toModel(gson) }
+    }
+
     fun saveGames(games: List<Game>) {
         val gameEntityList = games.map { it.toEntity(gson) }
         gameDao.saveGames(*gameEntityList.toTypedArray())
