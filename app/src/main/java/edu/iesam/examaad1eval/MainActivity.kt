@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         val db = Room.databaseBuilder(this, ExDataBase::class.java, "examAAD").build()
         GlobalScope.launch {
             //llamar a Room
-            val ex2DataRepository = Ex2DataRepository(MockEx2RemoteDataSource(), Ex2DbDataSource(db.gameDao(), db.playerDao()))
+            val ex2DataRepository = Ex2DataRepository(MockEx2RemoteDataSource(), Ex2DbDataSource(db.gameDao()))
             ex2DataRepository.getGames()
         }
     }

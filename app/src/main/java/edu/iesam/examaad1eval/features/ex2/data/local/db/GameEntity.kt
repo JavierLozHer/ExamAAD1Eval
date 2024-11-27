@@ -10,5 +10,6 @@ const val GAME_ID = "id"
 @Entity(tableName = GAME_TABLE_NAME)
 class GameEntity (
     @PrimaryKey @ColumnInfo(name = GAME_ID) val id : String,
-    @ColumnInfo(name = "title") val title : String
+    @ColumnInfo(name = "title") val title : String,
+    @ColumnInfo(name = "player") val player: String
 )
