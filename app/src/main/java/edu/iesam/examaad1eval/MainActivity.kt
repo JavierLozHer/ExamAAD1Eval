@@ -1,7 +1,11 @@
 package edu.iesam.examaad1eval
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import edu.iesam.examaad1eval.features.ex1.data.Ex1DataRepository
+import edu.iesam.examaad1eval.features.ex1.data.local.Ex1XmlLocalDataSource
+import edu.iesam.examaad1eval.features.ex1.data.remote.MockEx1RemoteDataSource
 import androidx.room.Room
 import edu.iesam.examaad1eval.app.data.local.ExDataBase
 import edu.iesam.examaad1eval.features.ex2.data.Ex2DataRepository
@@ -21,6 +25,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun executeExercise1(){
         //Ejecutar el ejercicio 1 desde aquí llamando al Ex1DataRepository directamente
+        val ex1DataRepository = Ex1DataRepository(MockEx1RemoteDataSource(), Ex1XmlLocalDataSource(this))
+
+        val users = ex1DataRepository.getUsers()
+        Log.d("@dev", users.toString())
+
+        val products = ex1DataRepository.getItems()
+        Log.d("@dev", products.toString())
+
+        val services = ex1DataRepository.getServices()
+        Log.d("@dev", services.toString())
     }
 
     @OptIn(DelicateCoroutinesApi::class)

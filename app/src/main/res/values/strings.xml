@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ExamAAD1Eval</string>
+    <string name="xml_name">db-exam</string>
+    <string name="xml_users_name">users</string>
+    <string name="xml_products_name">products</string>
+    <string name="xml_services_name">services</string>
 </resources>
